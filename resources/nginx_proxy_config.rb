@@ -7,7 +7,7 @@
 
 include Chef::Resource::ApplicationBase
 
-attribute :listen, :kind_of => [Array] :default => [80]
+attribute :listen, :kind_of => [Array], :default => [80]
 attribute :server_name, :kind_of => [String, Array], :default => node['fqdn']
 attribute :client_max_body_size, :kind_of => String, :default => "4G"
 attribute :keepalive_timeout, :kind_of => Integer, :default => 5
