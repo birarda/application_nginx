@@ -31,7 +31,7 @@ action :before_deploy do
       content Chef::EncryptedDataBagItem.load('secure', new_resource.application_name)['ssl_cert']
     end
 
-    file "#{node[:nginx][:cert_dir]}/#{new_resource.application_name]}.key" do
+    file "#{node[:nginx][:cert_dir]}/#{new_resource.application_name}.key" do
       owner new_resource.owner
       group new_resource.group
       mode "0600"
