@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: acre
-# Provider:: nginx_proxy
+# Provider:: nginx_proxy_config
 #
 # Copyright 2012, Stephen Birarda
 #

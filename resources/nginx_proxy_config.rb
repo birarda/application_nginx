@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: acre
-# Resource:: nginx_proxy
+# Resource:: nginx_proxy_config
 #
 # Copyright 2012, Stephen Birarda
 #
