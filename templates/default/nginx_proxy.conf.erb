@@ -18,7 +18,7 @@ server {
 
     root <%= @resource.public_path %>;  
 
-    access_log <%= node[:nginx][:log_dir] %>/<%= @resource.application.name %>.access.log <%= @resource.access_log_format %>;
+    access_log <%= node[:nginx][:log_dir] %>/<%= @resource.application.name %>.access.log;
     error_log <%= node[:nginx][:log_dir] %>/<%= @resource.application.name %>.error.log;
 
     location / {
