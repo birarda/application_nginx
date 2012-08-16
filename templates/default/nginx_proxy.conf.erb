@@ -12,14 +12,14 @@ server {
     keepalive_timeout <%= @resource.keepalive_timeout %>;
 
     <% if @resource.ssl_enabled %>
-    ssl_certificate <%= node[:nginx][:cert_dir] %>/<%= @resource.application_name %>.pem;
-    ssl_certificate_key <%= node[:nginx][:cert_dir] %>/<%= @resource.application_name %>.key;
+    ssl_certificate <%= node[:nginx][:cert_dir] %>/<%= @resource.application.name %>.pem;
+    ssl_certificate_key <%= node[:nginx][:cert_dir] %>/<%= @resource.application.name %>.key;
     <% end %> 
 
     root <%= @resource.public_path %>;  
 
-    access_log <%= node[:nginx][:log_dir] %>/<%= @resource.application_name %>.access.log <%= @resource.access_log_format %>;
-    error_log <%= node[:nginx][:log_dir] %>/<%= @resource.application_name %>.error.log;
+    access_log <%= node[:nginx][:log_dir] %>/<%= @resource.application.name %>.access.log <%= @resource.access_log_format %>;
+    error_log <%= node[:nginx][:log_dir] %>/<%= @resource.application.name %>.error.log;
 
     location / {
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
