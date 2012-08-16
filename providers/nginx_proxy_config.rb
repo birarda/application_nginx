@@ -23,20 +23,20 @@ action :before_deploy do
   if new_resource.ssl_enabled
     # if this is an ssl site then grab the certificate and certificate key from the data bag
     # and create the appropriate files so that nginx can use them
-    file "#{node[:nginx][:cert_dir]}/#{new_resource.application_name}.pem" do
+    file "#{node[:nginx][:cert_dir]}/#{new_resource.application.name}.pem" do
       owner new_resource.owner
       group new_resource.group
       mode "0600"
       action :create
-      content Chef::EncryptedDataBagItem.load('secure', new_resource.application_name)['ssl_cert']
+      content Chef::EncryptedDataBagItem.load('secure', new_resource.application.name)['ssl_cert']
     end
 
-    file "#{node[:nginx][:cert_dir]}/#{new_resource.application_name}.key" do
+    file "#{node[:nginx][:cert_dir]}/#{new_resource.application.name}.key" do
       owner new_resource.owner
       group new_resource.group
       mode "0600"
       action :create
-      content Chef::EncryptedDataBagItem.load('secure', new_resource.application_name)['ssl_key']
+      content Chef::EncryptedDataBagItem.load('secure', new_resource.application.name)['ssl_key']
     end
   end 
 
