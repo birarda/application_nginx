@@ -47,7 +47,7 @@ server {
     }
     <% end %>
 
-<% w%{rewrite error_page include}.each do |attribute| %>
+<% ['rewrite', 'error_page', 'include'].each do |attribute| %>
 <% unless @resource.send(attribute).empty? %>
 <%= attribute_iterate('attribute') %>
 <% end %>
