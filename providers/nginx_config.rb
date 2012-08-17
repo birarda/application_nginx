@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: acre
-# Provider:: nginx_proxy_config
+# Provider:: nginx_config
 #
 # Copyright 2012, Stephen Birarda
 #
@@ -13,7 +13,7 @@ end
 action :before_deploy do
 
   template "#{node['nginx']['dir']}/sites-available/#{new_resource.application.name}.conf" do
-    source   "nginx_proxy.conf.erb"
+    source   "nginx_site.conf.erb"
     cookbook "application_nginx"
     owner node[:nginx][:user]
     group node[:nginx][:user]
