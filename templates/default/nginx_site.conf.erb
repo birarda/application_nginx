@@ -6,7 +6,7 @@ def attribute_iterate(attribute, prefix = attribute)
     statements = ""
     
     @resource.send(attribute).each do |rule|
-        statements += "#{prefix} #{rule};\n"
+        statements += "\n    #{prefix} #{rule};"
     end
 
     return statements
@@ -14,7 +14,7 @@ end
 %>
 
 server {
-    <%= attribute_iterate('listen') %>
+<%= attribute_iterate('listen') %>
 
     server_name <%= @resource.server_name.is_a?(Array) ? @resource.server_name.join(' ') : @resource.server_name %>;
 
@@ -49,7 +49,7 @@ server {
     }
     <% end %>
 
-    <%= attribute_iterate('rewrite') unless @resource.rewrite.empty? %>
-    <%= attribute_iterate('error_page') unless @resource.error_page.empty? %>
-    <%= attribute_iterate('inc', 'include') unless @resource.inc.empty?%>
+<%= attribute_iterate('rewrite') unless @resource.rewrite.empty? %>
+<%= attribute_iterate('error_page') unless @resource.error_page.empty? %>
+<%= attribute_iterate('inc', 'include') unless @resource.inc.empty?%>
 }
