@@ -3,7 +3,7 @@
 
 <% 
 def attribute_iterate(attribute, prefix = attribute)
-    if @resource.send(attribute).each do |rule|
+    @resource.send(attribute).each do |rule|
         puts "#{prefix} #{rule};"
     end
 end
