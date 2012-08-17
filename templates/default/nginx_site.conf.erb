@@ -4,7 +4,7 @@
 <% 
 def attribute_iterate(attribute, prefix = attribute)
     @resource.send(attribute).each do |rule|
-        puts "#{prefix} #{rule};"
+        "#{prefix} #{rule};"
     end
 end
 %>
