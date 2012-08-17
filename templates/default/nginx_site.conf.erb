@@ -3,9 +3,13 @@
 
 <% 
 def attribute_iterate(attribute, prefix = attribute)
+    statements = ""
+    
     @resource.send(attribute).each do |rule|
-        "#{prefix} #{rule};"
+        statements += "#{prefix} #{rule};\n"
     end
+
+    return statements
 end
 %>
 
@@ -45,7 +49,7 @@ server {
     }
     <% end %>
 
-    <%= attribute_iterate('rewrite') %>
-    <%= attribute_iterate('error_page') %>
-    <%= attribute_iterate('inc', 'include') %>
+    <%= attribute_iterate('rewrite') unless @resource.rewrite.empty? %>
+    <%= attribute_iterate('error_page') unless @resource.error_page.empty? %>
+    <%= attribute_iterate('inc', 'include') unless @resource.inc.empty?%>
 }
