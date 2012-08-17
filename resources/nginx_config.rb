@@ -16,4 +16,4 @@ attribute :public_path, :kind_of => String
 attribute :proxy_port, :kind_of => String, :default => ""
 attribute :error_page, :kind_of => Array, :default => []
 attribute :rewrite, :kind_of => Hash, :default => []
-attribute :inc, :kind_of => Array, :default => []
+attribute :include, :kind_of => Array, :default => []
