@@ -15,6 +15,7 @@ server {
 <%= attribute_iterate('listen') %>
 
     server_name <%= @resource.server_name.is_a?(Array) ? @resource.server_name.join(' ') : @resource.server_name %>;
+    index index.php index.html;
 
     client_max_body_size <%= @resource.client_max_body_size %>;
     keepalive_timeout <%= @resource.keepalive_timeout %>;
