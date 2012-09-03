@@ -29,7 +29,7 @@ action :before_deploy do
       group new_resource.group
       mode "0600"
       action :create
-      content Chef::EncryptedDataBagItem.load('secure', new_resource.application.name)['ssl_cert']
+      content Chef::EncryptedDataBagItem.load('apps', new_resource.application.name)['ssl_cert']
     end
 
     file "#{node[:nginx][:cert_dir]}/#{new_resource.application.name}.key" do
@@ -37,7 +37,7 @@ action :before_deploy do
       group new_resource.group
       mode "0600"
       action :create
-      content Chef::EncryptedDataBagItem.load('secure', new_resource.application.name)['ssl_key']
+      content Chef::EncryptedDataBagItem.load('apps', new_resource.application.name)['ssl_key']
     end
   end 
 
