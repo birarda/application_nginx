@@ -13,8 +13,8 @@ end
 action :before_deploy do
 
   template "#{node['nginx']['dir']}/sites-available/#{new_resource.application.name}.conf" do
-    source    @resource.template ? @resource.template_file : "nginx_site.conf.erb"
-    cookbook  @resource.template ? @resource.cookbook_name : "application_nginx"
+    source    new_resource.template ? new_resource.template_file : "nginx_site.conf.erb"
+    cookbook  new_resource.template ? new_resource.cookbook_name : "application_nginx"
     owner node[:nginx][:user]
     group node[:nginx][:user]
     mode "644"
